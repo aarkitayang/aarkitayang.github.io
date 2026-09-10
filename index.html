@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>张嘉豪 · 游戏系统策划作品集</title>
+<meta name="description" content="2027届游戏系统策划求职作品集：一款完整上线的休闲手游《史努比小果冻》、12分钟设计讲解视频、黑神话悟空棍势循环拆解案、王者荣耀亲密关系系统策划案。" />
+<style>
+  :root{
+    --bg:#0b0817;
+    --bg2:#120e26;
+    --txt:#ece8ff;
+    --muted:#9b93c4;
+    --line:rgba(150,120,230,.10);
+    --card:rgba(255,255,255,.045);
+    --card-border:rgba(255,255,255,.10);
+    --jelly-a:#37f0b0;
+    --jelly-b:#13b88f;
+    --blue-a:#5cc0ff;
+    --blue-b:#2f6dff;
+    --purple:#9a7bff;
+    --gold:#ffd98a;
+    --font:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",-apple-system,system-ui,sans-serif;
+    --mono:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);color:var(--txt);line-height:1.75;
+    background:
+      radial-gradient(1200px 700px at 50% -10%, #241a45 0%, transparent 60%),
+      radial-gradient(900px 600px at 100% 100%, #182a4d 0%, transparent 55%),
+      linear-gradient(180deg,var(--bg) 0%, var(--bg2) 100%);
+    background-attachment:fixed;
+    min-height:100vh;position:relative;overflow-x:hidden;
+  }
+  /* 复古科技网格 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(circle at 50% 24%, #000 0%, transparent 78%);
+    -webkit-mask-image:radial-gradient(circle at 50% 24%, #000 0%, transparent 78%);
+  }
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .wrap{position:relative;z-index:1;max-width:1020px;margin:0 auto;padding:0 22px}
+
+  /* ===== 导航 ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    background:rgba(11,8,23,.72);border-bottom:1px solid var(--line);
+  }
+  nav .inner{max-width:1020px;margin:0 auto;padding:0 22px;height:60px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em;color:var(--txt);text-decoration:none}
+  .logo .dot{width:14px;height:14px;border-radius:50% 50% 50% 4px;background:linear-gradient(135deg,var(--jelly-a),var(--jelly-b));box-shadow:0 0 12px rgba(55,240,176,.6);animation:jiggle 3.2s ease-in-out infinite}
+  .logo small{font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.2em}
+  nav .links{display:flex;gap:6px}
+  nav .links a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:10px;transition:.2s}
+  nav .links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+  @media(max-width:640px){nav .links a{padding:6px 8px;font-size:13px}}
+
+  /* ===== Hero ===== */
+  header{padding:132px 0 56px;text-align:center}
+  .badge{
+    display:inline-block;font-size:12px;letter-spacing:.14em;
+    color:var(--gold);border:1px solid rgba(255,217,138,.35);
+    background:rgba(255,217,138,.08);padding:5px 12px;border-radius:999px;margin-bottom:20px;
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 rgba(255,217,138,0)}50%{box-shadow:0 0 18px rgba(255,217,138,.25)}}
+  h1{
+    font-size:clamp(40px,9vw,74px);font-weight:800;letter-spacing:.03em;line-height:1.1;
+    background:linear-gradient(180deg,#fff,#c7b6ff 70%,#9a7bff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 34px rgba(150,110,255,.25);
+  }
+  .hero-sub{margin-top:16px;color:var(--muted);font-size:clamp(14px,2.4vw,17px)}
+  .hero-sub b{color:#fff}
+  .chain{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .chip{
+    font-size:14px;font-weight:700;padding:8px 16px;border-radius:999px;
+    background:var(--card);border:1px solid var(--card-border);color:var(--txt);
+    text-decoration:none;transition:.25s;cursor:pointer;
+  }
+  .chip:hover{transform:translateY(-3px) scale(1.04);border-color:rgba(255,255,255,.3);box-shadow:0 8px 20px rgba(0,0,0,.35)}
+  .chip.do{border-color:rgba(55,240,176,.4);color:#9af7d6}
+  .chip.tell{border-color:rgba(92,192,255,.4);color:#bfe3ff}
+  .chip.see{border-color:rgba(255,217,138,.4);color:#ffe4ae}
+  .chip.write{border-color:rgba(154,123,255,.45);color:#d6c9ff}
+  .arrow{color:var(--muted);font-size:14px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:760px;margin:44px auto 0}
+  @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--card);border:1px solid var(--card-border);border-radius:18px;padding:18px 10px;transition:.25s}
+  .stat:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.24)}
+  .stat .n{font-family:var(--mono);font-size:clamp(24px,4.4vw,34px);font-weight:800;background:linear-gradient(180deg,#fff,#bfe3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .t{color:var(--muted);font-size:12.5px;margin-top:4px}
+  .hero-cta{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cta{
+    display:inline-block;text-decoration:none;font-weight:800;font-size:15px;
+    padding:14px 26px;border-radius:14px;transition:.2s;letter-spacing:.02em;
+  }
+  .cta.primary{color:#08121a;background:linear-gradient(180deg,var(--jelly-a),var(--jelly-b));box-shadow:0 10px 26px rgba(19,184,143,.35)}
+  .cta.primary:hover{transform:translateY(-2px);filter:brightness(1.07)}
+  .cta.ghost{color:var(--txt);border:1px solid var(--card-border);background:var(--card)}
+  .cta.ghost:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+
+  /* ===== 区块通用 ===== */
+  section{padding:64px 0}
+  .sec-title{font-size:clamp(24px,4.6vw,32px);font-weight:800;text-align:center;letter-spacing:.04em}
+  .sec-title em{font-style:normal;background:linear-gradient(90deg,var(--jelly-a),var(--blue-a),var(--purple));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 6s linear infinite}
+  @keyframes flow{to{background-position:200% 0}}
+  .sec-desc{text-align:center;color:var(--muted);font-size:14.5px;margin-top:10px}
+
+  /* ===== 王牌作品 ===== */
+  .featured{
+    margin-top:36px;border-radius:26px;padding:30px;
+    background:var(--card);border:1px solid var(--card-border);
+    display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .featured::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(500px 260px at 12% -20%, rgba(55,240,176,.14), transparent 70%)}
+  @media(max-width:860px){.featured{grid-template-columns:1fr}}
+  .video-shell{position:relative;z-index:1;border-radius:18px;overflow:hidden;border:1px solid var(--card-border);background:#000;aspect-ratio:9/16;max-height:620px;margin:0 auto;width:100%;max-width:360px}
+  .video-shell iframe{width:100%;height:100%;border:0;display:block}
+  .featured h3{font-size:26px;font-weight:800;position:relative;z-index:1}
+  .featured .tagline{color:var(--muted);font-size:13.5px;margin-top:2px}
+  .feat-points{margin-top:16px;display:grid;gap:9px;position:relative;z-index:1}
+  .feat-points li{list-style:none;color:var(--txt);font-size:14px;display:flex;gap:9px;align-items:flex-start}
+  .feat-points li::before{content:"";flex:0 0 8px;height:8px;margin-top:9px;border-radius:2px;background:linear-gradient(135deg,var(--jelly-a),var(--jelly-b));transform:rotate(45deg)}
+  .feat-points b{color:#9af7d6;font-weight:700}
+  .feat-btns{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+  .mini-btn{font-size:14px;font-weight:700;text-decoration:none;padding:11px 18px;border-radius:12px;transition:.2s;display:inline-block}
+  .mini-btn.a{color:#08121a;background:linear-gradient(180deg,var(--jelly-a),var(--jelly-b))}
+  .mini-btn.b{color:var(--txt);border:1px solid var(--card-border);background:rgba(255,255,255,.05)}
+  .mini-btn:hover{transform:translateY(-2px)}
+  .mini-btn.a:hover{filter:brightness(1.07)}
+  .mini-btn.b:hover{border-color:rgba(255,255,255,.3)}
+
+  /* ===== 双案卡片 ===== */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+  @media(max-width:820px){.duo{grid-template-columns:1fr}}
+  .case{
+    border-radius:22px;padding:26px;background:var(--card);border:1px solid var(--card-border);
+    position:relative;overflow:hidden;transition:.25s;
+  }
+  .case:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.22);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+  .case::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(360px 180px at 80% -30%, var(--glow), transparent 70%)}
+  .case.wukong{--glow:rgba(255,180,90,.15)}
+  .case.king{--glow:rgba(154,123,255,.16)}
+  .case .icon{font-size:34px;line-height:1}
+  .case h4{font-size:19px;font-weight:800;margin-top:10px}
+  .case .meta{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px}
+  .case p{color:var(--muted);font-size:13.5px;margin-top:12px}
+  .case .pts{margin-top:12px;display:grid;gap:8px;position:relative;z-index:1}
+  .case .pts li{list-style:none;font-size:13.5px;color:var(--txt);display:flex;gap:8px}
+  .case .pts li::before{content:"";flex:0 0 7px;height:7px;margin-top:8px;border-radius:50%;background:var(--glow2,#fff);opacity:.85}
+  .case.wukong .pts li::before{background:var(--gold)}
+  .case.king .pts li::before{background:#c9b8ff}
+  .case .go{margin-top:18px;position:relative;z-index:1}
+
+  /* ===== 关于/联系 ===== */
+  .about{border-radius:26px;padding:34px;background:var(--card);border:1px solid var(--card-border);margin-top:36px}
+  .about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+  .about h3{font-size:22px;font-weight:800}
+  .about .role{color:var(--gold);font-size:14px;margin-top:4px;font-weight:700}
+  .about p{color:var(--muted);font-size:14px;margin-top:14px}
+  .about p b{color:var(--txt)}
+  .skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+  .skill{font-size:12.5px;color:var(--txt);background:rgba(255,255,255,.05);border:1px solid var(--card-border);padding:6px 13px;border-radius:999px;transition:.2s}
+  .skill:hover{border-color:rgba(154,123,255,.5);color:#d6c9ff}
+  .contact-list{display:grid;gap:12px;margin-top:6px}
+  .contact-list a{
+    display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--txt);
+    background:rgba(255,255,255,.04);border:1px solid var(--card-border);
+    padding:13px 16px;border-radius:14px;font-size:14px;transition:.2s;
+  }
+  .contact-list a:hover{transform:translateX(5px);border-color:rgba(55,240,176,.4)}
+  .contact-list .ic{width:34px;height:34px;flex:0 0 34px;border-radius:10px;display:grid;place-items:center;font-size:16px;background:rgba(255,255,255,.06)}
+  .contact-list small{display:block;color:var(--muted);font-size:12px}
+
+  footer{margin-top:70px;padding:30px 0 46px;text-align:center;color:var(--muted);font-size:12.5px;line-height:2;border-top:1px solid var(--line)}
+  footer b{color:#d9ccff;font-weight:600}
+
+  /* ===== 动效基础 ===== */
+  @keyframes jiggle{0%,100%{transform:scale(1,1)}30%{transform:scale(1.06,.94)}60%{transform:scale(.95,1.05)}}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .blob{width:92px;height:92px;margin:0 auto 18px;display:block;animation:jiggle 3.4s ease-in-out infinite;transform-origin:50% 70%}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="inner">
+    <a class="logo" href="#top"><span class="dot"></span>张嘉豪<small>PORTFOLIO</small></a>
+    <div class="links">
+      <a href="#works">作品</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+  <!-- ============ Hero ============ -->
+  <header>
+    <div class="badge">2027 届 · 游戏系统策划 · 求职中</div>
+    <svg class="blob" viewBox="0 0 120 120" aria-hidden="true">
+      <defs><radialGradient id="hg" cx="36%" cy="30%" r="78%">
+        <stop offset="0%" stop-color="#9bffdc"/><stop offset="55%" stop-color="#37f0b0"/><stop offset="100%" stop-color="#11a884"/>
+      </radialGradient></defs>
+      <path d="M60 14 C86 14 106 33 106 60 C106 90 84 107 60 107 C36 107 14 90 14 60 C14 33 34 14 60 14 Z" fill="url(#hg)"/>
+      <ellipse cx="44" cy="42" rx="16" ry="10" fill="rgba(255,255,255,.6)"/>
+      <circle cx="46" cy="58" r="5" fill="#08231b"/><circle cx="74" cy="58" r="5" fill="#08231b"/>
+    </svg>
+    <h1>张嘉豪</h1>
+    <p class="hero-sub">自己做了一款休闲手游，从设计做到上线；也练习着拆了《黑神话：悟空》的战斗循环、<br/>写了《王者荣耀》的系统策划案。<b>作品还在起步阶段，但每一件都真实可查，欢迎多提意见。</b></p>
+    <div class="chain">
+      <a class="chip do" href="#work-shinubi">做了 · 一款休闲手游</a><span class="arrow">→</span>
+      <a class="chip tell" href="#work-shinubi">讲了 · 12 分钟设计视频</a><span class="arrow">→</span>
+      <a class="chip see" href="#work-wukong">拆了 · 黑神话战斗循环</a><span class="arrow">→</span>
+      <a class="chip write" href="#work-king">写了 · 王者系统策划案</a>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><div class="n" data-count="1">0</div><div class="t">款上线的小游戏</div></div>
+      <div class="stat reveal"><div class="n" data-count="2">0</div><div class="t">份拆解与策划案</div></div>
+      <div class="stat reveal"><div class="n" data-count="12">0</div><div class="t">分钟设计讲解视频</div></div>
+    </div>
+    <div class="hero-cta">
+      <a class="cta primary" href="#works">看我的作品</a>
+      <a class="cta ghost" href="https://aarkitayang.github.io/shinubi-download/" target="_blank" rel="noopener">直接下载游戏</a>
+    </div>
+  </header>
+
+  <!-- ============ 作品 ============ -->
+  <section id="works">
+    <h2 class="sec-title reveal">精选<em>作品</em></h2>
+    <p class="sec-desc reveal">每一个都给了可打开的完整证据：可玩、可看、可读</p>
+
+    <!-- 史努比小果冻 -->
+    <div class="featured reveal" id="work-shinubi">
+      <div class="video-shell">
+        <iframe src="https://player.bilibili.com/player.html?bvid=BV1LBYN6tEye&page=1&autoplay=0&danmaku=0&high_quality=1" scrolling="no" frameborder="0" allowfullscreen="true" loading="lazy" title="史努比小果冻 设计讲解视频"></iframe>
+      </div>
+      <div>
+        <h3>《史努比小果冻》</h3>
+        <div class="tagline">休闲游戏 ｜ Unity ｜ 一个人 + AI ｜ 2026</div>
+        <ul class="feat-points">
+          <li><b>从 0 到上线</b>：核心玩法、五关方块生态、三只 Boss、装备流派、商城、视听，全部独立完成，安卓 + PC 双端可玩</li>
+          <li><b>AI 协作工作流</b>：AI 生成代码与内容，设计决策与验收全部自己拍板——一个人跑出一支团队的产能</li>
+          <li><b>完整叙事</b>：12 分钟讲解视频把每个系统的设计意图讲清楚（左侧可直接播放）</li>
+        </ul>
+        <div class="feat-btns">
+          <a class="mini-btn a" href="https://aarkitayang.github.io/shinubi-download/" target="_blank" rel="noopener">下载游戏（免费）</a>
+          <a class="mini-btn b" href="https://www.bilibili.com/video/BV1LBYN6tEye/" target="_blank" rel="noopener">去 B 站观看</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 双案 -->
+    <div class="duo">
+      <div class="case wukong reveal" id="work-wukong">
+        <div class="icon">🐒</div>
+        <h4>《黑神话：悟空》棍势循环系统拆解案</h4>
+        <div class="meta">2026.07 – 2026.08 ｜ v1.0 → v2.1 ｜ 系统拆解报告</div>
+        <p>以年度动作大作的战斗核心「棍势」为对象，做了一次完整的系统逆向拆解，验证自己从现象倒推设计意图的能力。</p>
+        <ul class="pts">
+          <li>从框架起草到整体思路 V2.0 重构，历经五轮迭代打磨</li>
+          <li>建立可复用的战斗循环拆解框架，而非零散感受式点评</li>
+          <li>全案线上可读，见下方原文链接</li>
+        </ul>
+        <div class="go"><a class="mini-btn b" href="https://www.kdocs.cn/l/coba4mvqhO8C" target="_blank" rel="noopener">阅读拆解案全文</a></div>
+      </div>
+      <div class="case king reveal" id="work-king">
+        <div class="icon">👑</div>
+        <h4>《王者荣耀》亲密关系系统策划案</h4>
+        <div class="meta">系统策划案 ｜ 社交系统方向</div>
+        <p>以王者荣耀的社交体系为背景，输出亲密关系系统的完整策划方案，练习按商业项目的思路与规范写案。</p>
+        <ul class="pts">
+          <li>完整系统策划案结构：从系统定位到具体机制设计</li>
+          <li>面向成熟商业产品做增量设计，而非空中楼阁</li>
+          <li>全案线上可读，见下方原文链接</li>
+        </ul>
+        <div class="go"><a class="mini-btn b" href="https://www.kdocs.cn/l/ctUFbeFr0ePW" target="_blank" rel="noopener">阅读策划案全文</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 关于 ============ -->
+  <section id="about">
+    <h2 class="sec-title reveal">关于<em>我</em></h2>
+    <div class="about reveal">
+      <div class="about-grid">
+        <div>
+          <h3>张嘉豪</h3>
+          <div class="role">2027 届本科应届生（211）· 求职方向：游戏系统策划</div>
+          <p>我相信策划的核心能力是<b>「做出可验证的东西」</b>：所以我自己用 Unity + AI 把一款休闲游戏做到了上线可下载，用一支 12 分钟的视频把它讲清楚，再用两份深度案证明我能拆大作、能写商业方案。</p>
+          <p>「史努比」是我家猫的名字，与任何卡通形象无关；游戏<b>完全免费、非商业</b>。</p>
+          <div class="skills">
+            <span class="skill">Unity / C# 独立开发</span>
+            <span class="skill">系统拆解与分析</span>
+            <span class="skill">策划案写作</span>
+            <span class="skill">AI 辅助开发工作流</span>
+            <span class="skill">视频制作与讲解</span>
+            <span class="skill">游戏性能优化</span>
+          </div>
+        </div>
+        <div id="contact">
+          <div class="contact-list">
+            <a href="mailto:3533571077@qq.com">
+              <span class="ic">✉️</span>
+              <span>3533571077@qq.com<small>求职意向沟通 · 私信/邮件必回</small></span>
+            </a>
+            <a href="https://www.bilibili.com/video/BV1LBYN6tEye/" target="_blank" rel="noopener">
+              <span class="ic">📺</span>
+              <span>B 站 · 设计讲解视频<small>《史努比小果冻》12 分钟完整讲解</small></span>
+            </a>
+            <a href="https://aarkitayang.github.io/shinubi-download/" target="_blank" rel="noopener">
+              <span class="ic">🎮</span>
+              <span>游戏官方下载页<small>安卓 APK / Windows ZIP · 免费非商业</small></span>
+            </a>
+            <a href="https://github.com/aarkitayang" target="_blank" rel="noopener">
+              <span class="ic">🧩</span>
+              <span>GitHub · aarkitayang<small>下载页与作品集站点仓库</small></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    本页所有案例仅作个人学习研究用途；《黑神话：悟空》《王者荣耀》相关内容版权归原厂所有，非商业展示。<br/>
+    <b>史努比</b>是我家猫的名字，与任何卡通形象无关。游戏免费、非商业。<br/>
+    © 2026 张嘉豪 · 使用 AI 辅助开发 · 本站由手工 HTML/CSS/JS 构建，无框架
+  </footer>
+</div>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- 星尘粒子 ---- */
+  var canvas = document.getElementById('stars');
+  var ctx = canvas.getContext('2d');
+  var dots = [], W, H, dpr = Math.min(window.devicePixelRatio||1, 2);
+  var COLORS = ['#37f0b0','#5cc0ff','#9a7bff','#ffd98a'];
+  function resize(){
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W*dpr; canvas.height = H*dpr;
+    canvas.style.width = W+'px'; canvas.style.height = H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function init(){
+    dots = [];
+    var n = window.innerWidth < 640 ? 26 : 52;
+    for(var i=0;i<n;i++){
+      dots.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r:Math.random()*1.8+0.6,
+        vy:-(Math.random()*0.22+0.06),
+        sway:Math.random()*0.5+0.2,
+        ph:Math.random()*Math.PI*2,
+        c:COLORS[(Math.random()*COLORS.length)|0],
+        a:Math.random()*0.35+0.15
+      });
+    }
+  }
+  function tick(t){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<dots.length;i++){
+      var d=dots[i];
+      d.y += d.vy; d.ph += 0.008;
+      var x = d.x + Math.sin(t*0.0006*d.sway + d.ph)*14;
+      if(d.y < -8){ d.y = H+8; d.x = Math.random()*W; }
+      ctx.globalAlpha = d.a * (0.7 + 0.3*Math.sin(t*0.001 + d.ph));
+      ctx.fillStyle = d.c;
+      ctx.fillRect(x, d.y, d.r*2, d.r*2); /* 方形=像素感 */
+    }
+    ctx.globalAlpha = 1;
+    if(!document.hidden) requestAnimationFrame(tick);
+  }
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) requestAnimationFrame(tick); });
+  if(!reduced){
+    resize(); init(); requestAnimationFrame(tick);
+    window.addEventListener('resize',function(){ resize(); init(); });
+  }
+
+  /* ---- 滚动浮现 ---- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---- 数字滚动 ---- */
+  var counted = false;
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !counted){
+        counted = true;
+        document.querySelectorAll('.n[data-count]').forEach(function(el){
+          var target = +el.dataset.count, start = performance.now(), dur = 900;
+          function step(now){
+            var p = Math.min((now-start)/dur, 1);
+            p = 1 - Math.pow(1-p, 3);
+            el.textContent = Math.round(target*p);
+            if(p<1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+        cio.disconnect();
+      }
+    });
+  },{threshold:0.4});
+  var statsEl = document.querySelector('.stats');
+  if(statsEl) cio.observe(statsEl);
+
+  /* ---- 卡片 3D 倾斜（仅桌面） ---- */
+  if(window.matchMedia('(hover:hover)').matches && !reduced){
+    document.querySelectorAll('.featured,.case').forEach(function(card){
+      card.addEventListener('mousemove',function(ev){
+        var r = card.getBoundingClientRect();
+        var rx = ((ev.clientY - r.top)/r.height - 0.5) * -5;
+        var ry = ((ev.clientX - r.left)/r.width - 0.5) * 5;
+        card.style.transform = 'translateY(-5px) perspective(700px) rotateX('+rx+'deg) rotateY('+ry+'deg)';
+      });
+      card.addEventListener('mouseleave',function(){ card.style.transform=''; });
+    });
+  }
+})();
+</script>
+</body>
+</html>
