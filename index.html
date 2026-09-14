@@ -127,6 +127,17 @@
   .video-shell iframe{width:100%;height:100%;border:0;display:block}
   .featured h3{font-size:26px;font-weight:800;position:relative;z-index:1}
   .featured .tagline{color:var(--muted);font-size:13.5px;margin-top:2px}
+  .tagline .live{
+    display:inline-block;margin-left:6px;font-size:12px;font-weight:700;
+    color:#9af7d6;background:rgba(55,240,176,.12);border:1px solid rgba(55,240,176,.35);
+    padding:2px 11px;border-radius:999px;vertical-align:1px;
+  }
+  .tagline .live::before{
+    content:"";display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:var(--jelly-a);margin-right:6px;vertical-align:1px;
+    box-shadow:0 0 8px rgba(55,240,176,.8);animation:livepulse 2s ease-in-out infinite;
+  }
+  @keyframes livepulse{0%,100%{opacity:1}50%{opacity:.35}}
   .feat-points{margin-top:16px;display:grid;gap:9px;position:relative;z-index:1}
   .feat-points li{list-style:none;color:var(--txt);font-size:14px;display:flex;gap:9px;align-items:flex-start}
   .feat-points li::before{content:"";flex:0 0 8px;height:8px;margin-top:9px;border-radius:2px;background:linear-gradient(135deg,var(--jelly-a),var(--jelly-b));transform:rotate(45deg)}
@@ -254,7 +265,7 @@
       </div>
       <div>
         <h3>《史努比小果冻》</h3>
-        <div class="tagline">休闲游戏 ｜ Unity ｜ 一个人 + AI ｜ 2026</div>
+        <div class="tagline">休闲游戏 ｜ Unity ｜ 一个人 + AI ｜ 2026 ｜ <span class="live">持续更新中 · 目前更新到 v1.5</span></div>
         <ul class="feat-points">
           <li><b>从 0 到上线</b>：核心玩法、五关方块生态、三只 Boss、装备流派、商城、视听，全部独立完成，安卓 + PC 双端可玩</li>
           <li><b>AI 协作工作流</b>：AI 生成代码与内容，设计决策与验收全部自己拍板——一个人跑出一支团队的产能</li>
