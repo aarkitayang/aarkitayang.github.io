@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>张嘉豪 · 游戏系统策划作品集</title>
-<meta name="description" content="2027届游戏系统策划求职作品集：一款完整上线的休闲手游《史努比小果冻》、12分钟设计讲解视频、黑神话悟空棍势循环拆解案、王者荣耀亲密关系系统策划案，以及一份层叠三消产品的产品体验与竞品分析报告。" />
+<meta name="description" content="2027届游戏系统策划求职作品集：独立上线的休闲手游《史努比小果冻》、TapTap 聚光灯 2026 GameJam 参赛作品《Emerge Tower》元素反应塔防（21 天上线）、12分钟设计讲解视频、黑神话悟空棍势循环拆解案、王者荣耀亲密关系系统策划案，以及一份层叠三消产品的产品体验与竞品分析报告。" />
 <style>
   :root{
     --bg:#0b0817;
@@ -91,6 +91,7 @@
   .chip.see{border-color:rgba(255,217,138,.4);color:#ffe4ae}
   .chip.write{border-color:rgba(154,123,255,.45);color:#d6c9ff}
   .chip.rate{border-color:rgba(90,230,230,.42);color:#a9f4f4}
+  .chip.build{border-color:rgba(255,132,186,.45);color:#ffc9e0}
   .arrow{color:var(--muted);font-size:14px}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:760px;margin:44px auto 0}
   @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
@@ -124,6 +125,11 @@
   }
   .featured::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(500px 260px at 12% -20%, rgba(55,240,176,.14), transparent 70%)}
   @media(max-width:860px){.featured{grid-template-columns:1fr}}
+  /* GameJam 卡：文字在左，16:9 横屏视频在右 */
+  .featured.gamejam{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+  .featured.gamejam::after{background:radial-gradient(500px 260px at 88% -20%, rgba(255,132,186,.13), transparent 70%)}
+  .featured.gamejam .video-shell{aspect-ratio:16/9;max-width:none;max-height:none;margin:0;width:100%;align-self:center}
+  @media(max-width:860px){.featured.gamejam{grid-template-columns:1fr}}
   .video-shell{position:relative;z-index:1;border-radius:18px;overflow:hidden;border:1px solid var(--card-border);background:#000;aspect-ratio:9/16;max-height:620px;margin:0 auto;width:100%;max-width:360px}
   .video-shell iframe{width:100%;height:100%;border:0;display:block}
   .featured h3{font-size:26px;font-weight:800;position:relative;z-index:1}
@@ -238,8 +244,9 @@
       <circle cx="46" cy="58" r="5" fill="#08231b"/><circle cx="74" cy="58" r="5" fill="#08231b"/>
     </svg>
     <h1>张嘉豪</h1>
-    <p class="hero-sub">自己做了一款休闲手游，从设计做到上线；也拆了《黑神话：悟空》的战斗循环、写了《王者荣耀》的系统策划案，<br/>还做了一份层叠三消的产品体验与竞品分析。<b>作品还在起步阶段，但每一件都真实可查，欢迎多提意见。</b></p>
+    <p class="hero-sub">自己独立做了一款休闲手游，从设计做到上线；又带 2 人小队用 21 天做出一款元素反应塔防，安卓端已在 TapTap 上架可试玩。<br/>也拆了《黑神话：悟空》的战斗循环、写了《王者荣耀》的系统策划案、评了一款层叠三消。<b>每一件都真实可查，欢迎多提意见。</b></p>
     <div class="chain">
+      <a class="chip build" href="#work-emerge">造了 · 21 天元素反应塔防</a><span class="arrow">→</span>
       <a class="chip do" href="#work-shinubi">做了 · 一款休闲手游</a><span class="arrow">→</span>
       <a class="chip tell" href="#work-shinubi">讲了 · 12 分钟设计视频</a><span class="arrow">→</span>
       <a class="chip see" href="#work-wukong">拆了 · 黑神话战斗循环</a><span class="arrow">→</span>
@@ -247,7 +254,7 @@
       <a class="chip rate" href="#work-analysis">评了 · 一款层叠三消</a>
     </div>
     <div class="stats">
-      <div class="stat reveal"><div class="n" data-count="1">0</div><div class="t">款上线的小游戏</div></div>
+      <div class="stat reveal"><div class="n" data-count="2">0</div><div class="t">款上线可玩的小游戏</div></div>
       <div class="stat reveal"><div class="n" data-count="3">0</div><div class="t">份拆解与策划案</div></div>
       <div class="stat reveal"><div class="n" data-count="12">0</div><div class="t">分钟设计讲解视频</div></div>
     </div>
@@ -261,6 +268,26 @@
   <section id="works">
     <h2 class="sec-title reveal">精选<em>作品</em></h2>
     <p class="sec-desc reveal">每一个都给了可打开的完整证据：可玩、可看、可读</p>
+
+    <!-- Emerge Tower · 聚光灯 2026 GameJam -->
+    <div class="featured gamejam reveal" id="work-emerge">
+      <div>
+        <h3>《Emerge Tower》元素反应塔防</h3>
+        <div class="tagline">策略塔防 ｜ Unity ｜ 2 人学生团队 · 队长 ｜ 2026.10 ｜ <span class="live">已在 TapTap 上架试玩</span></div>
+        <ul class="feat-points">
+          <li><b>规则涌现</b>：地形元素 × 三类职能塔 × 四元素反应，三套极简规则交给玩家自由组合——用少量规则换策略空间，而不是堆功能、堆数值</li>
+          <li><b>元素反应系统</b>：火/水/草/雷四元素 + 六种反应（蒸发·点燃·超载·导电·缠绕·腐化），每种反应留一条专属指纹</li>
+          <li><b>21 天交付</b>：TapTap 聚光灯 2026 GameJam 参赛作品，21 天内完成系统设计、Unity 实现、双端出包与上架，安卓端已开放官方试玩</li>
+        </ul>
+        <div class="feat-btns">
+          <a class="mini-btn a" href="https://www.taptap.cn/app/986040" target="_blank" rel="noopener">去 TapTap 试玩</a>
+          <a class="mini-btn b" href="https://www.bilibili.com/video/BV1frnH6jEXt/" target="_blank" rel="noopener">去 B 站看实机</a>
+        </div>
+      </div>
+      <div class="video-shell">
+        <iframe src="https://player.bilibili.com/player.html?bvid=BV1frnH6jEXt&page=1&autoplay=0&danmaku=0&high_quality=1" scrolling="no" frameborder="0" allowfullscreen="true" loading="lazy" title="Emerge Tower 实机演示"></iframe>
+      </div>
+    </div>
 
     <!-- 史努比小果冻 -->
     <div class="featured reveal" id="work-shinubi">
@@ -331,7 +358,7 @@
         <div>
           <h3>张嘉豪</h3>
           <div class="role">2027 届本科应届生（211）· 求职方向：游戏系统策划</div>
-          <p>我相信策划的核心能力是<b>「做出可验证的东西」</b>：所以我自己用 Unity + AI 把一款休闲游戏做到了上线可下载，用一支 12 分钟的视频把它讲清楚，再用三份深度案证明我能拆大作、能写商业方案、能做产品与竞品分析。</p>
+          <p>我相信策划的核心能力是<b>「做出可验证的东西」</b>：所以我用 Unity + AI 独立把一款休闲游戏做到了上线可下载，又在 21 天里带小队做出一款元素反应塔防并上架 TapTap，再用三份深度案证明我能拆大作、能写商业方案、能做产品与竞品分析。</p>
           <p>「史努比」是我家猫的名字，与任何卡通形象无关；游戏<b>完全免费、非商业</b>。</p>
           <div class="skills">
             <span class="skill">Unity / C# 独立开发</span>
@@ -357,6 +384,10 @@
               <span class="ic">🎮</span>
               <span>游戏官方下载页<small>安卓 APK / Windows ZIP · 免费非商业</small></span>
             </a>
+            <a href="https://www.taptap.cn/app/986040" target="_blank" rel="noopener">
+              <span class="ic">🕹️</span>
+              <span>TapTap · Emerge Tower<small>元素反应塔防 · 安卓官方试玩</small></span>
+            </a>
             <a href="https://github.com/aarkitayang" target="_blank" rel="noopener">
               <span class="ic">🧩</span>
               <span>GitHub · aarkitayang<small>下载页与作品集站点仓库</small></span>
@@ -370,7 +401,7 @@
   <footer>
     本页所有案例仅作个人学习研究用途；《黑神话：悟空》《王者荣耀》《Goods Triple Sort-Puzzle》相关内容版权归原厂所有，非商业展示。<br/>
     <b>史努比</b>是我家猫的名字，与任何卡通形象无关。游戏免费、非商业。<br/>
-    © 2026 张嘉豪 · 使用 AI 辅助开发 · 本站由手工 HTML/CSS/JS 构建，无框架
+    © 2026 张嘉豪 · 使用 AI 辅助开发 · 本站由手工 HTML/CSS/JS 构建，无框架<br/>《Emerge Tower》为 TapTap 聚光灯 2026 GameJam 参赛作品，免费、无内购、无广告。
   </footer>
 </div>
 
